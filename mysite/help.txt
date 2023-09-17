@@ -1,0 +1,26 @@
+python3 -m venv my_env
+source  my_env/bin/activate
+pip3 install django
+python manage.py runserver
+
+python manage.py startapp {name package}
+python -m pip install Pillow
+python manage.py flush
+lsof -t -i:8000
+
+python manage.py createsuperuser
+kwadro2010@gmail.com
+Ira_03061906
+
+python manage.py makemessages -l en_US -l uk_UA
+django-admin makemessages --all --ignore=env
+
+django-admin compilemessages --ignore=env
+
+python manage.py makemigrations kvadro
+python manage.py migrate kvadro
+
+pip install django-rosetta
+
+
+bases = (parler.models.TranslatableModel, models.Model)

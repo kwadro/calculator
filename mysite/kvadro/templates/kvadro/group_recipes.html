@@ -1,0 +1,15 @@
+{% extends "kvadro/template.html" %}
+{% block title %} Страви  в  групі {{grouprecipes.first.recipe_group}}{% endblock %}
+{% block content %}
+    <h1> {{grouprecipes.first.recipe_group}}</h1>
+    <ul>
+        {% for recipe in grouprecipes %}
+        <li>
+            <a href="{% url 'kvadro:recipe' recipe.id %}">
+                {{ recipe.recipe_name}}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

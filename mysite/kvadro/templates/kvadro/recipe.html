@@ -1,0 +1,26 @@
+<ul>
+    {% for recipe in recipes %}
+    <h1>{{ recipe.recipe_name }}</h1>
+    <h2> {{ recipe.owner }}</h2>
+    <h3> {{ recipe.image }}</h3>
+    <h3> {{ recipe.was_published }}</h3>
+    <h3> {{ recipe.status }}</h3>
+    <h3> recipe -product --- {{ recipe.recipeproduct }}</h3>
+        {% for product in recipe.product.all %}
+             <li>{{product.product_name}}
+             --{{product.product_measure}}
+             --{{product.product_price}}
+             --{{product.recipe_product__quantity}}
+             </li>
+        {% endfor %}
+    {% endfor %}
+
+    {% for product in recipe.recipe_product.all %}
+         <li>{{product.product_name}}
+            - {{ product.product_price }}
+            - {{ product.product_measure }}
+        </li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'kvadro:index' %}">Повернутися на головну?</a>

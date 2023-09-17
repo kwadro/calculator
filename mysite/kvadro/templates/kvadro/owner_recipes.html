@@ -1,0 +1,21 @@
+{% extends "kvadro/template.html" %}
+
+{% block title %} Bcі страви {{ownerrecipes.first.owner}}{% endblock %}
+
+{% block header %}<h1 class="header text-center"> Bcі страви {{ownerrecipes.first.owner}}</h1>{% endblock %}
+
+{% block content %}
+<div class="mb-3 row text-decoration-none">
+    <div class="d-flex align-items-center col-auto col-md-12 col-xl-6 px-sm-5 px-0">
+        <ul class="w-100 list-group">
+        {% for recipe in ownerrecipes %}
+            <li class="list-group-item">
+            <a href="{% url 'kvadro:recipe' recipe.id %}">
+                {{ recipe.recipe_name}}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+    </div>
+</div>
+{% endblock %}

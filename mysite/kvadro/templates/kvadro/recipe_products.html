@@ -1,0 +1,37 @@
+{% extends "kvadro/template.html" %}
+{% block title %} Склад  страви {{recipesproducts.first.recipe.recipe_name}}{% endblock %}
+{% block header %}
+    <h1 class="header text-center">{{recipesproducts.first.recipe.recipe_name}}</h1>
+    <p class="text-center">
+        <span class="text-muted fs-9">всі рецепти автора: </span>
+        <a title="Всі страви автора" class="text-decoration-none" href="{% url 'kvadro:owner' recipesproducts.first.recipe.owner_id %}">
+            <span class="fs-5">{{recipesproducts.first.recipe.owner }}</span>
+        </a>
+        <span class="text-muted fs-9">категорія: </span>
+        <a title="Всі страви автора" class="text-decoration-none" href="{% url 'kvadro:group_recipes' recipesproducts.first.recipe.recipe_group_id %}">
+            <span class="fs-5">{{recipesproducts.first.recipe.recipe_group }}</span>
+        </a>
+    </p>
+{% endblock %}
+{% block content %}
+<div class="row text-decoration-none">
+    <div class="d-flex align-items-center col-auto col-md-12 col-xl-6 px-sm-5 px-0">
+        <img class='img-fluid w-100' src="/{{recipesproducts.first.recipe.image}}" />
+    </div>
+    <div class="col-auto col-md-12 col-xl-5 px-sm-5 px-0">
+        {% if recipesproducts %}
+        <p class="fs-4 text-center" >Продукти  для приготування :</p>
+        <ul class="list-group">
+            {% for recipesproduct in recipesproducts %}
+            <li class="list-group-item">
+                {{recipesproduct.product.product_name}} -- {{recipesproduct.quantity}} {{recipesproduct.product.product_measure}}
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p><h1> {{"Рецепт  поки   не  заповнено"}}</h1></p>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

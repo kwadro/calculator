@@ -1,0 +1,28 @@
+{% extends "kvadro/template.html" %}
+{% block title %} Ласкаво  просимо  до  розрахунку {% endblock %}
+{% block header %}<h1 class="header text-center"> Ласкаво  просимо  до  сервісу </h1> {% endblock %}
+
+{% block content %}
+    <div class="row text-decoration-none">
+        <div class="col-auto col-md-12 col-xl-5 px-sm-5 px-0">
+            <p class="fs-2 text-center" >Нові рецепти</p>
+            {% if latest_recipe_list %}
+            <ul class="list-group">
+                {% for recipe in latest_recipe_list %}
+                <li class="list-group-item">
+                    <a class="align-middle px-0 text-decoration-none" href="{% url 'kvadro:recipe' recipe.id %}">
+                        {{ recipe.recipe_name}}
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p><h1> {{"No recipe are available."}}</h1></p>
+            {% endif %}
+        </div>
+        <div class="col py-3">
+            <p class="fs-2 text-center">Останні Ваші розрахунки</p>
+            {% include "kvadro/calculate_list.html" %}
+        </div>
+    </div>
+{% endblock %}

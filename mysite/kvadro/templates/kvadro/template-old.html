@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    {% load django_bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    {% bootstrap_messages %}
+    <link rel="stylesheet" href="{% static 'kvadro/style.css' %}">
+    <title>{% block title %}Калькулятор свята{% endblock %}</title>
+</head>
+<body>
+{% block header %}<h1 class="header text-center">Розрахунок   святкового  столу</h1> {% endblock %}
+<div class="row column container">
+    {% block sidebar %}
+    <div id="sidebar" class="sidebar col-md-2" >
+        <ul>
+            <li><a href="/">Головна</a></li>
+            <li><a href="/about/">Про  нас</a></li>
+            <li><a href="/contact/">Контакт</a></li>
+        </ul>
+    </div>
+    {% endblock %}
+    <div id="content " class="col-md-10">
+        {% block content %}{% endblock %}
+    </div>
+
+</div>
+
+<div id="footer">
+    {% block footer %}Всі  права належать  компанії Квадро, 2023{% endblock %}
+</div>
+</body>
+</html>

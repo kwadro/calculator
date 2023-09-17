@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    {% load django_bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    {% bootstrap_messages %}
+    <link rel="stylesheet" href="{% static 'kvadro/style.css' %}">
+    <title>{% block title %}Калькулятор свята{% endblock %}</title>
+</head>
+<body class="bg-light">
+<div class="container-fluid">
+    <div class="row flex-nowrap">
+        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                    <span class="fs-5 d-none d-sm-inline">Menu</span>
+                </a>
+                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                    <li class="nav-item">
+                        <a href="/" class="nav-link align-middle px-0">
+                            <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Головна</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/about/" class="nav-link px-0 align-middle">
+                            <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Про нас</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/contact/" class="nav-link px-0 align-middle">
+                            <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Контакт</span>
+                        </a>
+                    </li>
+                </ul>
+                <hr>
+            </div>
+        </div>
+
+        <div class="col py-3">
+            <div class="d-flex flex-column h-100">
+                <div class="flex-shrink-0">
+                {% block info-message%}test message{% endblock %}
+                {% block header %}<h1 class="header text-center">Розрахунок   святкового  столу</h1> {% endblock %}
+                {% block content %}{% endblock %}
+                {% block backbutton %}
+                    <a href="{{request.META.HTTP_REFERER|escape}}">
+                        <button type="button" class="mt-3 btn btn-dark px-5">
+                        Назад
+                    </button>
+                    </a>
+                {% endblock %}
+                </div>
+                {% block footer %}
+                <div id="footer" class="mt-auto py-3 text-center">
+                    <div class="container">
+                        <span class="text-muted">Всі  права належать Квадро, 2023</span>
+                    </div>
+                </div>
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+
